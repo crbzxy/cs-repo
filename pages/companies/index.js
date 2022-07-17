@@ -2,11 +2,12 @@ import React from 'react';
 import Head from 'next/head';
 import { Header } from 'semantic-ui-react';
 import HeaderHome from '../../components/Header';
+import Footer from '../../components/Footer';
 function HomePage() {
   return (
-    <div>
+    <div className='bg-slate-300 h-screen'>
       <Head>
-        <title>CBO CHALLENGE </title>
+        <title>Registra tu empresa</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
         <meta property='og:title' content='My page title' key='title' />
       </Head>
@@ -15,12 +16,13 @@ function HomePage() {
         <Header.Content>
           <Header.Subheader>
             <h1 className='text-center text-white'>
-              <span className='text-5xl'>CBO CHALLENGE</span>
+              <span className='text-5xl'>Registra tu empresa</span>
             </h1>
           </Header.Subheader>
         </Header.Content>
       </Header>
       <HeaderHome />
+      <Footer />
     </div>
   );
 }
