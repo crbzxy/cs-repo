@@ -5,7 +5,7 @@ function HeaderHome() {
   return (
     <>
       <Container text className='py-8'>
-        <Form>
+        <Form className='max-w-lg'>
           <Form.Field>
             <label>Nombre de la empresa</label>
             <input placeholder='Escriba el nombre de su empresa' />
