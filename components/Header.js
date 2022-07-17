@@ -1,17 +1,22 @@
 import axios from 'axios';
+import { useState } from 'react';
 
 import { Container, Button, Form, TextArea } from 'semantic-ui-react';
 function HeaderHome() {
+  const [company, setCompany] = useState({
+    name: '',
+    creationDate: '',
+    companyType: '',
+    description: '',
+  });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post('/api/companies', {
-      name: 'Casas Geo',
-      creationDate: '2022-07-02',
-      companyType: 'Distribuidor',
-      description:
-        'Casas Geo es una empresa que se dedica a la distribución de productos geolocalizados, como casas, apartamentos, terrenos, etc.',
-    });
+    const res = await axios.post('/api/companies', company);
     console.log(res);
+  };
+  const handleChange = ({ target: { name, value } }) => {
+    console.log(name, value);
+    setCompany({ ...company, [name]: value });
   };
 
   return (
@@ -22,14 +27,18 @@ function HeaderHome() {
             <label>
               Nombre de la empresa <span className='text-red-500'>*</span>
             </label>
-            <input placeholder='Escriba el nombre de su empresa' name='name' />
+            <input
+              placeholder='Escriba el nombre de su empresa'
+              name='name'
+              onChange={handleChange}
+            />
           </Form.Field>
           <Form.Field>
             <label>
               Fecha de Constitución <span className='text-red-500'>*</span>
             </label>
             <input
-              
+              onChange={handleChange}
               placeholder='fecha'
               type='date'
               name='creationDate'
@@ -40,7 +49,7 @@ function HeaderHome() {
             <label>
               Tipo de empresa <span className='text-red-500'>*</span>
             </label>
-            <select  name='companiType' id='companyType'>
+            <select onChange={handleChange} name='companiType' id='companyType'>
               <option defaultValue={true}>Seleccione una opción</option>
               <option value='Distribuidor'>Distribuidor</option>
               <option value='Mayorista'>Mayorista</option>
@@ -53,6 +62,7 @@ function HeaderHome() {
               Comentarios <span className='text-red-500'>*</span>
             </label>
             <TextArea
+              onChange={handleChange}
               name='description'
               id='description'
               placeholder='Descripción de la empresa'

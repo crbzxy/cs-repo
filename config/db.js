@@ -2,8 +2,8 @@ import { createPool } from 'mysql2/promise';
 
 const pool = createPool({
   host: 'toj9owp3jvz4.us-east-3.psdb.cloud',
-  user: '6g89xrtxybc9',
-  password: 'pscale_pw_w6BeQkp3GLw9eNcwZfZiFH29Jehn0ezXLMJR6kP5zTY',
+  user: 'dvb9jgah904u',
+  password: 'pscale_pw_geFmeSGr3AaukS3aIuiLdt-Ay7p_jjak7dgXqCwriwg',
   database: 'companiesdb',
   ssl: {
     rejectUnauthorized: false,
