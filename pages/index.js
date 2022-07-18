@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import { Header } from 'semantic-ui-react';
-import HeaderHome from '../components/Header';
 import HomeImg from '/public/img.svg';
 import Image from 'next/image';
 import Link from 'next/link';

@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { useState } from 'react';
-
+import { useRouter } from 'next/router';
 import { Container, Button, Form, TextArea } from 'semantic-ui-react';
-function HeaderHome() {
+import toast, { Toaster } from 'react-hot-toast';
+function HeaderForm() {
+  const router = useRouter();
   const [company, setCompany] = useState({
     name: '',
     creationDate: '',
@@ -12,6 +14,8 @@ function HeaderHome() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await axios.post('/api/companies', company);
+    router.push('/companies');
+    toast.success('Company added');
     console.log(res);
   };
   const handleChange = ({ target: { name, value } }) => {
@@ -28,6 +32,7 @@ function HeaderHome() {
               Nombre de la empresa <span className='text-red-500'>*</span>
             </label>
             <input
+              required
               placeholder='Escriba el nombre de su empresa'
               name='name'
               onChange={handleChange}
@@ -49,7 +54,11 @@ function HeaderHome() {
             <label>
               Tipo de empresa <span className='text-red-500'>*</span>
             </label>
-            <select onChange={handleChange} name='companiType' id='companyType'>
+            <select
+              required
+              onChange={handleChange}
+              name='companyType'
+              id='companyType'>
               <option defaultValue={true}>Seleccione una opción</option>
               <option value='Distribuidor'>Distribuidor</option>
               <option value='Mayorista'>Mayorista</option>
@@ -83,8 +92,9 @@ function HeaderHome() {
           </span>
         </small>
       </Container>
+      <Toaster />
     </>
   );
 }
 
-export default HeaderHome;
+export default HeaderForm;

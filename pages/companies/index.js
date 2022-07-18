@@ -1,15 +1,19 @@
 import React from 'react';
 import Head from 'next/head';
 import { Header } from 'semantic-ui-react';
-import HeaderHome from '../../components/Header';
+import HeaderForm from '../../components/Header';
 import Footer from '../../components/Footer';
 import axios from 'axios';
-import Moment from 'moment';
+
 import Layout from '../../components/layout';
+import ListCompanies from '../../components/ListCompanies';
+import { Toaster } from 'react-hot-toast';
 function HomePage({ companies }) {
   console.log(companies);
   return (
     <>
+      <Toaster />
+
       <Layout>
         <Head>
           <title>Registra tu empresa</title>
@@ -29,20 +33,9 @@ function HomePage({ companies }) {
             </Header.Subheader>
           </Header.Content>
         </Header>
-        <HeaderHome />
-        <section className='grid grid-cols-3'>
-          {companies.map((company) => (
-            <div
-              className='company border-radius border-gray-500 shadow-md p-4 m-4'
-              key={company.id}>
-              <h2 className='text-2xl'>{company.name}</h2>
+        <HeaderForm />
+        <ListCompanies companies={companies} />
 
-              <p>{company.description}</p>
-              <p>{company.companyType}</p>
-              <p>{Moment(company.creationDate).format('DD/MM/YYYY')}</p>
-            </div>
-          ))}
-        </section>
         <Footer />
       </Layout>
     </>
@@ -50,9 +43,11 @@ function HomePage({ companies }) {
 }
 export const getServerSideProps = async (context) => {
   console.log(context);
-  const res = await axios.get('http://localhost:3000/api/companies');
+  const { data: companies } = await axios.get(
+    'http://localhost:3000/api/companies'
+  );
   return {
-    props: { companies: res.data },
+    props: { companies },
   };
 };
 export default HomePage;
