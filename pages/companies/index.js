@@ -44,7 +44,7 @@ function HomePage({ companies }) {
 export const getServerSideProps = async (context) => {
   console.log(context);
   const { data: companies } = await axios.get(
-    'http://localhost:3000/api/companies'
+    'https://cbo-cschallenge.netlify.app/api/companies'
   );
   return {
     props: { companies },
