@@ -1,6 +1,5 @@
 import { createPool } from 'mysql2/promise';
-import dotenv from 'dotenv';
-dotenv.config();
+require('dotenv').config();
 
 const pool = createPool({
   host: 'toj9owp3jvz4.us-east-3.psdb.cloud',
