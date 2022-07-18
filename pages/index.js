@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { Header } from 'semantic-ui-react';
 import HomeImg from '/public/img.svg';
+import Logo from '/public/logo.png';
 import Image from 'next/image';
 import Link from 'next/link';
 function HomePage() {
@@ -18,11 +19,13 @@ function HomePage() {
           <Header.Subheader>
             <div className='contenedor  '>
               <div className='col basis-2/4'>
+              <span className='text-2xl flex flex-col items-center'>
+                    <Image layout="fixed" width={100} height={100} src={Logo} alt='logo' className=' imglogo' />
+                    
+                  </span>
                 <h1 className='text-center text-6xl text-white py-6'>
                   Registra tu empresa
-                  <span className='text-2xl flex flex-col'>
-                    Carlos Boyzo Oregón
-                  </span>
+                 
                 </h1>
                 <Image src={HomeImg} alt={'HomePage'} />
               </div>
