@@ -5,7 +5,7 @@ import HeaderForm from '../../components/Header';
 import Footer from '../../components/Footer';
 import axios from 'axios';
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import ListCompanies from '../../components/ListCompanies';
 import { Toaster } from 'react-hot-toast';
 function HomePage({ companies }) {
